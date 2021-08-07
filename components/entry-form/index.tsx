@@ -4,8 +4,8 @@ import Router from 'next/router'
 import Button from '@/components/button'
 
 export default function EntryForm() {
-  const [title, setTitle] = useState('')
-  const [content, setContent] = useState('')
+  const [name, setName] = useState('')
+  const [cpf, setCpf] = useState('')
   const [submitting, setSubmitting] = useState(false)
 
   async function submitHandler(e) {
@@ -18,8 +18,8 @@ export default function EntryForm() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          title,
-          content,
+          name,
+          cpf,
         }),
       })
       setSubmitting(false)
@@ -42,8 +42,8 @@ export default function EntryForm() {
           className="shadow border rounded w-full"
           type="text"
           name="title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         />
       </div>
       <div className="my-4">
@@ -54,8 +54,8 @@ export default function EntryForm() {
           className="shadow border resize-none focus:shadow-outline w-full h-48"
           id="content"
           name="content"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
+          value={cpf}
+          onChange={(e) => setCpf(e.target.value)}
         />
       </div>
       <Button disabled={submitting} type="submit">

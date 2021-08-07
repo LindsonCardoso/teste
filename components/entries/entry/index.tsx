@@ -5,7 +5,7 @@ import { mutate } from 'swr'
 import ButtonLink from '@/components/button-link'
 import Button from '@/components/button'
 
-function Entry({ id, title, content }) {
+function Entry({ id, name, cpf }) {
   const [deleting, setDeleting] = useState(false)
 
   async function deleteEntry() {
@@ -20,11 +20,11 @@ function Entry({ id, title, content }) {
     <div>
       <div className="flex items-center">
         <Link href={`/entry/${id}`}>
-          <a className="font-bold py-2">{title}</a>
+          <a className="font-bold py-2">{name}</a>
         </Link>
         <div className="flex ml-4">
           <ButtonLink
-            href={`/entry/edit/${id}?title=${title}&content=${content}`}
+            href={`/entry/edit/${id}?title=${name}&content=${cpf}`}
             className="h-5 py-0 mx-1"
           >
             Edit
@@ -38,7 +38,7 @@ function Entry({ id, title, content }) {
           </Button>
         </div>
       </div>
-      <p>{content}</p>
+      <p>{cpf}</p>
     </div>
   )
 }

@@ -5,9 +5,9 @@ import { query } from '../../lib/db'
 const filter = new Filter()
 
 const handler: NextApiHandler = async (req, res) => {
-  const { title, content } = req.body
+  const { name, cpf } = req.body
   try {
-    if (!title || !content) {
+    if (!name || !cpf) {
       return res
         .status(400)
         .json({ message: '`title` and `content` are both required' })
@@ -15,10 +15,14 @@ const handler: NextApiHandler = async (req, res) => {
 
     const results = await query(
       `
-      INSERT INTO entries (title, content)
+      INSERT INTO cad_empresa 
+      (
+       cli_nome, 
+       cli_documento
+       )
       VALUES (?, ?)
       `,
-      [filter.clean(title), filter.clean(content)]
+      [filter.clean(name), filter.clean(cpf)]
     )
 
     return res.json(results)

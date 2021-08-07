@@ -12,9 +12,9 @@ const handler: NextApiHandler = async (req, res) => {
     }
     const results = await query(
       `
-      SELECT id, title, content
-      FROM entries
-      WHERE id = ?
+      SELECT cli_id, cli_nome, cli_documento
+      FROM cad_empresa
+      WHERE cli_id = ?
     `,
       id
     )

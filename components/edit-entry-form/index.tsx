@@ -4,20 +4,20 @@ import Router, { useRouter } from 'next/router'
 import Button from '../button'
 
 export default function EntryForm() {
-  const [_title, setTitle] = useState('')
-  const [_content, setContent] = useState('')
+  const [_name, setName] = useState('')
+  const [_cpf, setCpf] = useState('')
   const [submitting, setSubmitting] = useState(false)
   const router = useRouter()
-  const { id, title, content } = router.query
+  const { id, name, cpf } = router.query
 
   useEffect(() => {
-    if (typeof title === 'string') {
-      setTitle(title)
+    if (typeof name === 'string') {
+      setName(name)
     }
-    if (typeof content === 'string') {
-      setContent(content)
+    if (typeof cpf === 'string') {
+      setCpf(cpf)
     }
-  }, [title, content])
+  }, [name, cpf])
 
   async function submitHandler(e) {
     e.preventDefault()
@@ -30,8 +30,8 @@ export default function EntryForm() {
         },
         body: JSON.stringify({
           id,
-          title: _title,
-          content: _content,
+          title: _name,
+          content: _cpf,
         }),
       })
       const json = await res.json()
@@ -54,8 +54,8 @@ export default function EntryForm() {
           className="shadow border rounded w-full"
           type="text"
           name="title"
-          value={_title}
-          onChange={(e) => setTitle(e.target.value)}
+          value={_name}
+          onChange={(e) => setName(e.target.value)}
         />
       </div>
       <div className="my-4">
@@ -66,8 +66,8 @@ export default function EntryForm() {
           className="shadow border resize-none focus:shadow-outline w-full h-48"
           id="content"
           name="content"
-          value={_content}
-          onChange={(e) => setContent(e.target.value)}
+          value={_cpf}
+          onChange={(e) => setCpf(e.target.value)}
         />
       </div>
       <Button disabled={submitting} type="submit">
