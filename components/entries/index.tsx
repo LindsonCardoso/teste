@@ -6,12 +6,12 @@ function Entries({ entries }) {
       <div>
         {entries.map((e) => (
           <div key={e.id} className="py-2">
-            <Entry id={e.id} title={e.name} content={e.cpf} />
+            <Entry id={e.id} name={e.titlename} cpf={e.cpf} />
           </div>
         ))}
       </div>
 
-      
+
     )
   } else {
     return null
