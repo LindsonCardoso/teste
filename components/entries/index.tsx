@@ -10,6 +10,8 @@ function Entries({ entries }) {
           </div>
         ))}
       </div>
+
+      
     )
   } else {
     return null
