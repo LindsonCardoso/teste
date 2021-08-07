@@ -12,17 +12,17 @@ export default function EditEntryPage() {
   if (data) {
     return (
       <>
-        <Nav title="View" />
+        <Nav name="View" />
         <Container>
           <h1 className="font-bold text-3xl my-2">{data.name}</h1>
-          <p>{data.content}</p>
+          <p>{data.cpf}</p>
         </Container>
       </>
     )
   } else {
     return (
       <>
-        <Nav title="View" />
+        <Nav name="View" />
         <Container>
           <h1 className="font-bold text-3xl my-2">...</h1>
           <p>...</p>
